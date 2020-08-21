@@ -1,0 +1,32 @@
+{
+  "name": "@aos/analytics-browser",
+  "description": "browser SDK for analytics API",
+  "version": "1.2.9",
+  "homepage": "",
+  "author": "wangshuai1 (wangshuai1@huami.com)",
+  "globalname":"Analytics",
+  "main": "analytics.common.js",
+  "module": "analytics.cjs.js",
+  "jsnext:main": "analytics.esm.js",
+  "cjs:main": "analytics.cjs.js",
+  "browser": "analytics.min.js",
+  "browser:source": "analytics.js",
+  "types": "packages/analytics.d.ts",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "scripts": {
+    "pub": "publish dist"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "tti-polyfill": "^0.2.2"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

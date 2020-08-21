@@ -1,0 +1,17 @@
+~*
+.DS_Store
+.npmrc
+.svn
+npm-debug.log
+node_modules/
+coverage/
+scripts/
+test/
+.commitlintrc.js
+.eslintrc.js
+.prettierignore
+.stylelintrc.json
+rollup.config.js
+.prettierrc.js
+.gitignore
+.babelrc

@@ -1,0 +1,30 @@
+module.exports = {
+    env: {
+        browser: true,
+        es6: true,
+        node: true,
+    },
+    extends: [
+        'airbnb-base',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/typescript',
+        'prettier/@typescript-eslint',
+        'plugin:prettier/recommended',
+    ],
+    parser: 'babel-eslint',
+    rules: {
+        'no-restricted-syntax': 0,
+        'consistent-return': 0,
+        'class-methods-use-this': 0,
+        'import/no-named-as-default': 0,
+        camelcase: 0,
+        'prefer-rest-params': 0,
+        'import/no-extraneous-dependencies': 0,
+        'no-unused-expressions': 0,
+        'no-undef': 0,
+        'global-require': 0,
+        'no-bitwise': 0,
+        'no-underscore-dangle': 0,
+        'no-param-reassign': 0,
+    },
+};

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Web site created using create-react-app" />
+        <title>sdk</title>
+        <style>
+            .btn {
+                width: 100px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                background: red;
+                color: #fff;
+                cursor: pointer;
+            }
+            body {
+                height: 1200px;
+            }
+        </style>
+        <script src="./index.js"></script>
+    </head>
+    <body>
+        <button class="btn J_PV">
+            PV
+        </button>
+        <button class="btn J_event">
+            Event
+        </button>
+        <button class="btn" id="newError">
+            newError
+        </button>
+        <button class="btn" id="newRangeError">
+            newRangeError
+        </button>
+        <button class="btn" id="accordError">
+            accordError
+        </button>
+        <button class="btn" id="visibilitychange">
+            visibilitychange
+        </button>
+        <button class="btn" id="testAjaxerror">
+            testAjaxerror
+        </button>
+        <button class="btn" id="scriptError">
+            scriptError
+        </button>
+        <div
+            class="hmrp-expose"
+            data-$hmex="{'id':'素材5','pos':'素材位置Bottom','tp':'免责声明','n':'曝光区块'}"
+        >
+            你看到我了
+        </div>
+        <script>
+            // let timing = performance.timing;
+            // console.log(timing.loadEventEnd - timing.navigationStart)
+            Analytics.init({
+                debug: true,
+                clients: {
+                    huami: '7bba72664b68940ce29364b16b73d086',
+                    // huami: '085e848e3182788cfc553464792dae28', // 线上
+                    baidu: '913335e0ca583c50a4d60fa91994dc12',
+                },
+                namespace: 'huami_health',
+                autoPushPV: true,
+                autoOPT: true,
+                isSPA: false,
+                autoFMP: true,
+                autoExpo: true,
+                autoPushErr: true,
+            });
+
+            // window.onload = (event) => {
+            //   Analytics.push(['_trackFMP'])
+            //   // setTimeout(()=>{console.log(timing.loadEventEnd - timing.navigationStart)},0)
+            // };
+            // Analytics.push(['_trackFMP'])
+
+            Analytics.push([
+                '_trackEvent',
+                '免责声明',
+                '点击',
+                '点击确定',
+                {
+                    opt_value: 1,
+                    id: '素材ID',
+                    pos: '素材位置0-M',
+                },
+            ]);
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('.J_event').addEventListener(
+                    'click',
+                    function () {
+                        Analytics.push([
+                            '_trackEvent',
+                            '免责声明',
+                            '点击',
+                            '点击确定',
+                            {
+                                opt_value: 1,
+                                id: '素材ID',
+                                pos: '素材位置0-M',
+                            },
+                        ]);
+                    },
+                    false,
+                );
+
+                // document.querySelector('.J_Err').addEventListener('click', function() {
+                //   Analytics.push(['_trackErr', '调试', new Error('自定义错误')])
+                // }, false)
+
+                document.querySelector('.J_PV').addEventListener(
+                    'click',
+                    function () {
+                        Analytics.push(['_trackPageview']);
+                    },
+                    false,
+                );
+
+                document.querySelector('#testAjaxerror').addEventListener(
+                    'click',
+                    function () {
+                        Analytics.push(['_trackErr', new Error('这里报告了一个错误')]);
+                    },
+                    false,
+                );
+
+                document.querySelector('#newError').addEventListener('click', () => {
+                    throw new Error('Exception will be report');
+                });
+
+                document.querySelector('#newRangeError').addEventListener('click', () => {
+                    throw new RangeError('Exception will be report');
+                });
+
+                document.querySelector('#accordError').addEventListener('click', () => {
+                    Analytics.captureException(new Error('duplicated exception'));
+                });
+
+                document.querySelector('#scriptError').addEventListener('click', () => {
+                    a.a;
+                });
+
+                // document.querySelector('#visibilitychange').addEventListener('click', () => {
+
+                //   let newErrorElement = document.getElementById("newError");
+                // })
+            });
+        </script>
+    </body>
+</html>
